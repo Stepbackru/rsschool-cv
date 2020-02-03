@@ -23,7 +23,6 @@ All my life I wanted to start programming and engage in development, at the age 
     * Web mastering
         - Apache
         - nginx
-        - And so on..
     * Git (basics)
     * Methodologies:
         - BAM(Yandex)

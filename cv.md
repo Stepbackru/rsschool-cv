@@ -62,7 +62,7 @@ All my life I wanted to start programming and engage in development, at the age 
     });
     ```
 6. **Experience:**
-I went through 8 courses that relate to front-end and back-end web development and almost all my work is in [this repository](https://github.com/Stepbackru/Study-front-end)
+    I went through 11 courses that relate to front-end and back-end web development and almost all my work is in [this repository](https://github.com/Stepbackru/Study-front-end)
     But at one of the courses there was the final task of page layout according to the psd layout (which the teacher gave us) for the speed among students, I completed the work first and the teacher posted it on his resource, it is [available here](https://petiteweb.ru/vinners/rybakov/)
 7. **Education:**
     - Complete secondary Education
@@ -76,5 +76,8 @@ I went through 8 courses that relate to front-end and back-end web development a
         - [JavaScript. Level 3a. jQuery Library.](https://www.specialist.ru/course/kveri)
         - [JavaScript. Level 3в. Server-side programming with Node.js](https://www.specialist.ru/course/node)
         - [Web-mastering](https://www.specialist.ru/course/vem-v)
+        - [MySQL 8. Designing and creating databases](http://www.specialist.ru/course/mskvl)
+        - [JavaScript. Level 3. ReactJS and JSX](http://www.specialist.ru/course/react)
+        - [React: Redux end react-router](http://www.specialist.ru/course/react2)
 8. **English:**
 I study English from school, I also went to courses for some time, in the same courses my level of English was determined, it is level A2, closer to level B1

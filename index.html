@@ -64,57 +64,57 @@
                 <article class="col1__code">
                     <h2>Example of my code</h2>
                     <pre><code>
-                        import React, { Component } from 'react';
-                        import { debounce } from 'lodash';
-                        import Iphone from './iphone/Iphone';
-                        import Samsung from './samsung/Samsung';
-                        import css from './iphone/components/wallpaper/screen/style.module.css';
-                        import './style.css';
-                        
-                        class Phone extends Component{
-                          constructor(props){
-                            super(props);
-                            this.keyPress = this.keyPress.bind(this);
-                          }
-                        
-                          keyPress(e){
-                            if(e.keyCode === 112 || e.keyCode === 1079){
-                              const {toChangePhoneVisible, toChangeAnimationVisible, toChangeScreenBlock, toChangeLockAnimate} = this.props;
-                              if(!this.props.phoneVisible){
-                                toChangePhoneVisible(false);
-                                toChangeAnimationVisible('isOpen');
-                                toChangeScreenBlock('');
-                                setTimeout(()=>toChangeScreenBlock('blockScreenOpen'), 250);
-                                setTimeout(()=>toChangeLockAnimate(css.screenLock__top_animate), 1250);
-                              }else{
-                                toChangeAnimationVisible('isClose');
-                                toChangeScreenBlock('blockScreenClose');
-                                toChangeLockAnimate('');
-                                setTimeout(()=>toChangePhoneVisible(true), 1200);
-                              }
-                            }
-                          }
-                        
-                          componentDidMount(){
-                            document.addEventListener('keypress', debounce(this.keyPress, 250));
-                          }
-                        
-                          componentWillUnmount(){
-                            document.removeEventListener('keypress', debounce(this.keyPress, 250));
-                          }
-                        
-                          render(){
-                            if (this.props.phoneType === 'iphone' && this.props.phoneVisible) {
-                              return <Iphone operator={this.props.operator} lockAnimate={this.props.lockAnimate} screenBlocker={this.props.screenBlocker} animationVisible={this.props.animationVisible} screenImage={this.props.screenImage} bgImage={this.props.bgImage} />
-                            }else if (this.props.phoneType === 'samsung' && this.state.phoneVisible) {
-                              return <Samsung />
-                            }else{
-                              return null
-                            }
-                            
-                          }
-                        }
-                        export default Phone;
+import React, { Component } from 'react';
+import { debounce } from 'lodash';
+import Iphone from './iphone/Iphone';
+import Samsung from './samsung/Samsung';
+import css from './iphone/components/wallpaper/screen/style.module.css';
+import './style.css';
+
+class Phone extends Component{
+  constructor(props){
+    super(props);
+    this.keyPress = this.keyPress.bind(this);
+  }
+
+  keyPress(e){
+    if(e.keyCode === 112 || e.keyCode === 1079){
+      const {toChangePhoneVisible, toChangeAnimationVisible, toChangeScreenBlock, toChangeLockAnimate} = this.props;
+      if(!this.props.phoneVisible){
+        toChangePhoneVisible(false);
+        toChangeAnimationVisible('isOpen');
+        toChangeScreenBlock('');
+        setTimeout(()=>toChangeScreenBlock('blockScreenOpen'), 250);
+        setTimeout(()=>toChangeLockAnimate(css.screenLock__top_animate), 1250);
+      }else{
+        toChangeAnimationVisible('isClose');
+        toChangeScreenBlock('blockScreenClose');
+        toChangeLockAnimate('');
+        setTimeout(()=>toChangePhoneVisible(true), 1200);
+      }
+    }
+  }
+
+  componentDidMount(){
+    document.addEventListener('keypress', debounce(this.keyPress, 250));
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener('keypress', debounce(this.keyPress, 250));
+  }
+
+  render(){
+    if (this.props.phoneType === 'iphone' && this.props.phoneVisible) {
+      return <Iphone operator={this.props.operator} lockAnimate={this.props.lockAnimate} screenBlocker={this.props.screenBlocker} animationVisible={this.props.animationVisible} screenImage={this.props.screenImage} bgImage={this.props.bgImage} />
+    }else if (this.props.phoneType === 'samsung' && this.state.phoneVisible) {
+      return <Samsung />
+    }else{
+      return null
+    }
+
+  }
+}
+export default Phone;
                     </code></pre>
                 </article>
             </section>

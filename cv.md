@@ -36,29 +36,57 @@ All my life I wanted to start programming and engage in development, at the age 
         - MongoDB (basics)
 5. **Example of my code:**
     ```javascript
-    const express = require('express');
-    const socketIO = require('socket.io');
+    import React, { Component } from 'react';
+    import { debounce } from 'lodash';
+    import Iphone from './iphone/Iphone';
+    import Samsung from './samsung/Samsung';
+    import css from './iphone/components/wallpaper/screen/style.module.css';
+    import './style.css';
 
-    const app = express();
-    const io = socketIO.listen(app.listen(8080));
+    class Phone extends Component{
+    constructor(props){
+        super(props);
+        this.keyPress = this.keyPress.bind(this);
+    }
 
-    app.set('views', __dirname + '/tpl');
-    app.set('view engine', 'pug');
-    app.engine('pug', require('pug').__express);
+    keyPress(e){
+        if(e.keyCode === 112 || e.keyCode === 1079){
+        const {toChangePhoneVisible, toChangeAnimationVisible, toChangeScreenBlock, toChangeLockAnimate} = this.props;
+        if(!this.props.phoneVisible){
+            toChangePhoneVisible(false);
+            toChangeAnimationVisible('isOpen');
+            toChangeScreenBlock('');
+            setTimeout(()=>toChangeScreenBlock('blockScreenOpen'), 250);
+            setTimeout(()=>toChangeLockAnimate(css.screenLock__top_animate), 1250);
+        }else{
+            toChangeAnimationVisible('isClose');
+            toChangeScreenBlock('blockScreenClose');
+            toChangeLockAnimate('');
+            setTimeout(()=>toChangePhoneVisible(true), 1200);
+        }
+        }
+    }
 
-    app.use(express.static(__dirname + '/public'));
+    componentDidMount(){
+        document.addEventListener('keypress', debounce(this.keyPress, 250));
+    }
 
-    app.get('/', function(req,res){
-        res.render('page'); // Добавили страницу pug
-    });
+    componentWillUnmount(){
+        document.removeEventListener('keypress', debounce(this.keyPress, 250));
+    }
 
-    io.sockets.on('connection', function(client){
-        console.log('Connected');
-        client.emit('message', { message: 'Добро пожаловать в чат!' });
-        client.on('send', function(data){
-            io.emit('message', data);
-        });
-    });
+    render(){
+        if (this.props.phoneType === 'iphone' && this.props.phoneVisible) {
+        return <Iphone operator={this.props.operator} lockAnimate={this.props.lockAnimate} screenBlocker={this.props.screenBlocker} animationVisible={this.props.animationVisible} screenImage={this.props.screenImage} bgImage={this.props.bgImage} />
+        }else if (this.props.phoneType === 'samsung' && this.state.phoneVisible) {
+        return <Samsung />
+        }else{
+        return null
+        }
+        
+    }
+    }
+    export default Phone;
     ```
 6. **Experience:**
     I went through 11 courses that relate to front-end and back-end web development and almost all my work is in [this repository](https://github.com/Stepbackru/Study-front-end)

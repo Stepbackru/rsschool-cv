@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CV of Alexander Rybakov</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+    <link rel="stylesheet" href="/path/to/styles/default.css">
+    
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <section class="photo">
+                <img src="assets/photo.jpg" alt="photo">
+            </section>
+            <section class="name-info">
+                <h1>Alexander Rybakov</h1>
+                <h2>Junior JavaScript Developer</h2>
+                <p>Moscow, <a href="#contacts">Contact info</a></p>
+            </section>
+        </header>
+        <main>
+            <section class="col1">
+                <article class="col1__edu">
+                    <h2>Education</h2>
+                    <ol>
+                        <li>Complete secondary Education</li>
+                        <li>I am currently a correspondence student of Russian State Agrarian University - Moscow Timiryazev Agricultural Academy</li>
+                        <li>I completed 11 full-time courses at the Computer Training Center «Specialist» at Bauman MSTU (There are certificates on the successful completion of each course and I attach links to the description of each course):
+                            <ul>
+                                <li><a href="https://www.specialist.ru/course/eichtml-b">HTML and CSS. Level 1. Creation of sites in HTML 5 and CSS 3</a></li>
+                                <li><a href="https://www.specialist.ru/course/ashtml2-a">HTML and CSS. Level 2. Advanced CSS</a></li>
+                                <li><a href="https://www.specialist.ru/course/ashtml3">HTML and CSS. Level 3 Advanced methodologies and tools typesetting</a></li>
+                                <li><a href="https://www.specialist.ru/course/oprveb-a">JavaScript. Level 1. Web-Development fundamentals</a></li>
+                                <li><a href="https://www.specialist.ru/course/dzhsk-b">Jаvаscriрt. Lеvеl 2. Extendеd cоurse</a></li>
+                                <li><a href="https://www.specialist.ru/course/kveri">JavaScript. Level 3a. jQuery Library.</a></li>
+                                <li><a href="https://www.specialist.ru/course/node">JavaScript. Level 3в. Server-side programming with Node.js</a></li>
+                                <li><a href="https://www.specialist.ru/course/vem-v">Web-mastering</a></li>
+                                <li><a href="http://www.specialist.ru/course/mskvl">MySQL 8. Designing and creating databases</a></li>
+                                <li><a href="http://www.specialist.ru/course/react">JavaScript. Level 3. ReactJS and JSX</a></li>
+                                <li><a href="http://www.specialist.ru/course/react2">React: Redux end react-router</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </article>
+                <article class="col1__exp">
+                    <h2>Experience</h2>
+                    <p>I went through 11 courses that relate to front-end and back-end web development and almost all my work is in <a href="https://github.com/Stepbackru/Study-front-end">this repository</a> this repository But at one of the courses there was the final task of page layout according to the psd layout (which the teacher gave us) for the speed among students, I completed the work first and the teacher posted it on his resource, it is <a href="https://petiteweb.ru/vinners/rybakov/">available here</a></p>
+                </article>
+                <article id="contacts" class="col1__cont">
+                    <h2>Contacts</h2>
+                    <ul>
+                        <li>Email: <a href="mailto:alex-ruba@bk.ru">alex-ruba@bk.ru</a></li>
+                        <li>Skype: <a href="skype:gh0strus?chat">gh0strus</a></li>
+                        <li>Discord: <a href="https://discordapp.com/users/231761132560318466">Step^back#9640</a></li>
+                        <li>VK: <a href="https://vk.com/gh0strus">gh0strus</a></li>
+                        <li>Telegram: <a href="tg://resolve?domain=stepbackrus">@stepbackrus</a></li>
+                    </ul>
+                </article>
+                <article class="col1__code">
+                    <h2>Example of my code</h2>
+                    <pre><code>
+const express = require('express');
+const socketIO = require('socket.io');
+
+const app = express();
+const io = socketIO.listen(app.listen(8080));
+
+app.set('views', __dirname + '/tpl');
+app.set('view engine', 'pug');
+app.engine('pug', require('pug').__express);
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req,res){
+    res.render('page'); // Добавили страницу pug
+});
+
+io.sockets.on('connection', function(client){
+    console.log('Connected');
+    client.emit('message', { message: 'Добро пожаловать в чат!' });
+    client.on('send', function(data){
+        io.emit('message', data);
+    });
+});
+                    </code></pre>
+                </article>
+            </section>
+            <section class="col2">
+                    <article class="col2__about">
+                            <h2>About me</h2>
+                            <p>All my life I wanted to start programming and engage in development, at the age of 14 I started studying HTML and knew the basics, but later abandoned it. This year my life has changed a lot and I got an irresistible desire to study and develop in the field of web development and not only, I went to courses and studied several disciplines at once, it was difficult, I combined work, several homework at once, loaded myself to the maximum, to learn more and here, on the advice of my friend, I heard about the company, where I want to go, in order to develop professionally.</p>
+                    </article>
+                    <article class="col2__skills">
+                            <h2>Skills</h2>
+                            <ol>
+                                <li>HTML4-5
+                                    <ul>
+                                        <li>Native</li>
+                                        <li>Pug</li>
+                                    </ul>
+                                </li>
+                                <li>CSS3
+                                    <ul>
+                                        <li>Native</li>
+                                        <li>Stylus</li>
+                                        <li>SCSS</li>
+                                    </ul>
+                                </li>
+                                <li>JavaScript
+                                    <ul>
+                                        <li>jQuery</li>
+                                        <li>NodeJS</li>
+                                        <li>React</li>
+                                        <li>Redux</li>
+                                        <li>React-router</li>
+                                    </ul>
+                                </li>
+                                <li>Web mastering
+                                    <ul>
+                                        <li>Apache</li>
+                                        <li>nginx</li>
+                                    </ul>
+                                </li>
+                                <li>Git (basics)</li>
+                                <li>Methodologies
+                                    <ul>
+                                        <li>
+                                            <li>BAM(Yandex)</li>
+                                            <li>OOCSS</li>
+                                            <li>Atomic CSS</li>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Soft
+                                    <ul>
+                                        <li>Photoshop</li>
+                                        <li>Visual Studio Code</li>
+                                        <li>WebStorm (basics)</li>
+                                    </ul>
+                                </li>
+                                <li>Databases
+                                    <ul>
+                                        <li>MySQL 8</li>
+                                        <li>MongoDB (basics)</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                    </article>
+                    <article class="col2__eng">
+                            <h2>English</h2>
+                            <p>I study English from school, I also went to courses for some time, in the same courses my level of English was determined, it is level A2, closer to level B1</p>
+                    </article>
+            </section>
+        </main>
+    </div>
+    <footer>
+            <p>© Copyright 2019 by Alexander Rybakov</p>
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script src="/path/to/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

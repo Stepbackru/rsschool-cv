@@ -87,7 +87,7 @@ main h2 {
 .col2 h2 {
   width: 100%;
 }
-.col2 p {
+.col1, .col2 {
   text-align: justify;
 }
 .col2__skills ul {

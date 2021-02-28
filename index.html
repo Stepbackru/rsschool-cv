@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CV of Alexander Rybakov</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
     <link rel="stylesheet" href="/path/to/styles/default.css">
@@ -14,9 +14,9 @@
 <body>
     <div class="wrapper">
         <header>
-            <section class="photo">
-                <img src="assets/photo.jpg" alt="photo">
-            </section>
+            <div class="photo">
+                <img src="assets/photo.jpg" alt="photo of">
+            </div>
             <section class="name-info">
                 <h1>Alexander Rybakov</h1>
                 <h2>Junior JavaScript Developer</h2>
@@ -24,7 +24,7 @@
             </section>
         </header>
         <main>
-            <section class="col1">
+            <div class="col1">
                 <article class="col1__edu">
                     <h2>Education</h2>
                     <ol>
@@ -45,11 +45,13 @@
                                 <li><a href="http://www.specialist.ru/course/react2">React: Redux end react-router</a></li>
                             </ul>
                         </li>
+                        <li>Since September 2019, I have been a student of the <a href="https://docs.rs.school/#/">RS school</a> every six months, for various reasons I have never been able to finish it, but during the time I studied there I have mastered sufficient skills to help others in their studies and have been holding the position of a school activist for more than a year. I am writing guides for students and will soon create a short video course for very beginner students.</li>
                     </ol>
                 </article>
                 <article class="col1__exp">
                     <h2>Experience</h2>
-                    <p>I went through 11 courses that relate to front-end and back-end web development and almost all my work is in <a href="https://github.com/Stepbackru/Study-front-end">this repository</a> this repository But at one of the courses there was the final task of page layout according to the psd layout (which the teacher gave us) for the speed among students, I completed the work first and the teacher posted it on his resource, it is <a href="https://petiteweb.ru/vinners/rybakov/">available here</a></p>
+                    <p>I went through 11 courses that relate to front-end and back-end web development and almost all my work is in <a href="https://github.com/Stepbackru/Study-front-end">this repository</a> this repository But at one of the courses there was the final task of page layout according to the psd layout (which the teacher gave us) for the speed among students, I completed the work first and the teacher posted it on his resource, it is <a href="https://petiteweb.ru/vinners/rybakov/">available here (now not available)</a></p>
+                    <p>You can see the results of my studies at the RS school in <a href="https://github.com/Stepbackru">my github</a>, all that you will see there are the tasks completed as part of the training there</p>
                 </article>
                 <article id="contacts" class="col1__cont">
                     <h2>Contacts</h2>
@@ -63,62 +65,64 @@
                 </article>
                 <article class="col1__code">
                     <h2>Example of my code</h2>
-                    <pre><code>
-import React, { Component } from 'react';
-import { debounce } from 'lodash';
-import Iphone from './iphone/Iphone';
-import Samsung from './samsung/Samsung';
-import css from './iphone/components/wallpaper/screen/style.module.css';
-import './style.css';
+                    <pre><code>// {Object} args
 
-class Phone extends Component{
-  constructor(props){
-    super(props);
-    this.keyPress = this.keyPress.bind(this);
-  }
+const render = (args) => {
+    let element = null;
 
-  keyPress(e){
-    if(e.keyCode === 112 || e.keyCode === 1079){
-      const {toChangePhoneVisible, toChangeAnimationVisible, toChangeScreenBlock, toChangeLockAnimate} = this.props;
-      if(!this.props.phoneVisible){
-        toChangePhoneVisible(false);
-        toChangeAnimationVisible('isOpen');
-        toChangeScreenBlock('');
-        setTimeout(()=>toChangeScreenBlock('blockScreenOpen'), 250);
-        setTimeout(()=>toChangeLockAnimate(css.screenLock__top_animate), 1250);
-      }else{
-        toChangeAnimationVisible('isClose');
-        toChangeScreenBlock('blockScreenClose');
-        toChangeLockAnimate('');
-        setTimeout(()=>toChangePhoneVisible(true), 1200);
-      }
-    }
-  }
-
-  componentDidMount(){
-    document.addEventListener('keypress', debounce(this.keyPress, 250));
-  }
-
-  componentWillUnmount(){
-    document.removeEventListener('keypress', debounce(this.keyPress, 250));
-  }
-
-  render(){
-    if (this.props.phoneType === 'iphone' && this.props.phoneVisible) {
-      return <Iphone operator={this.props.operator} lockAnimate={this.props.lockAnimate} screenBlocker={this.props.screenBlocker} animationVisible={this.props.animationVisible} screenImage={this.props.screenImage} bgImage={this.props.bgImage} />
-    }else if (this.props.phoneType === 'samsung' && this.state.phoneVisible) {
-      return <Samsung />
-    }else{
-      return null
+    // Create Element
+    try {
+    element = document.createElement(args.el);
+    } catch {
+    throw new Error('Unable to create HTMLElement!');
     }
 
-  }
+    // Add classNames to element
+    if (args.classNames) {
+    element.classList.add(...args.classNames.split(' '));
+    }
+    
+    if (args.text !== undefined) {
+    element.innerText = `${args.text}`;
+    }
+
+    // Childs of element
+    if (args.child && Array.isArray(args.child)) {
+    args.child.forEach(child => element.appendChild(render(child)));
+    }
+
+    // Parent of element (for first element)
+    if (args.parent) {
+
+    if (args.parent === 'body') {
+        document.body.appendChild(element);
+    } else {
+        document.querySelector(`.${args.parent}`).appendChild(element);
+    }
+    }
+
+    // data-attributes of element
+    if (args.dataAttr !== undefined) {
+    args.dataAttr.forEach(([attrName, attrValue]) => {
+        if (attrValue === '') {
+        element.setAttribute(attrName, '');
+        }
+
+        if (attrName.match(/value|id|placeholder|type|pattern|autocomplete/)) {
+        element.setAttribute(attrName, attrValue);
+        } else if (attrValue !== '') {
+        element.dataset[attrName] = attrValue;
+        }
+    })
+    }
+    return element;
 }
-export default Phone;
+
+export default render;
                     </code></pre>
                 </article>
-            </section>
-            <section class="col2">
+            </div>
+            <div class="col2">
                     <article class="col2__about">
                             <h2>About me</h2>
                             <p>All my life I wanted to start programming and engage in development, at the age of 14 I started studying HTML and knew the basics, but later abandoned it. This year my life has changed a lot and I got an irresistible desire to study and develop in the field of web development and not only, I went to courses and studied several disciplines at once, it was difficult, I combined work, several homework at once, loaded myself to the maximum, to learn more and here, on the advice of my friend, I heard about the company, where I want to go, in order to develop professionally.</p>
@@ -157,11 +161,9 @@ export default Phone;
                                 <li>Git (basics)</li>
                                 <li>Methodologies
                                     <ul>
-                                        <li>
-                                            <li>BEM(Yandex)</li>
-                                            <li>OOCSS</li>
-                                            <li>Atomic CSS</li>
-                                        </li>
+                                        <li>BEM(Yandex)</li>
+                                        <li>OOCSS</li>
+                                        <li>Atomic CSS</li>
                                     </ul>
                                 </li>
                                 <li>Soft
@@ -183,11 +185,11 @@ export default Phone;
                             <h2>English</h2>
                             <p>I study English from school, I also went to courses for some time, in the same courses my level of English was determined, it is level A2, closer to level B1</p>
                     </article>
-            </section>
+            </div>
         </main>
     </div>
     <footer>
-            <p>© Copyright 2019 by Alexander Rybakov</p>
+            <p>© Copyright 2019-2021 by Alexander Rybakov</p>
     </footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
     <script src="/path/to/highlight.pack.js"></script>

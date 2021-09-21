@@ -1,1 +1,52 @@
 @import './assets/css/clear.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  background-color: #f0f0f6;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #767676;
+  transition: all ease-in .3s;
+  letter-spacing: -0.015em;
+}
+
+.hr {
+  width: 100%;
+  height: 2px;
+  background: #e5e5e5;
+  opacity: 0.8;
+}
+
+.cv {
+  margin: 0 auto;
+  max-width: 1440px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.leftSide {
+  padding: 30px;
+  width: 290px;
+  height: 100vh;
+  display: table-cell;
+  position: fixed;
+  left: -290px;
+  z-index: 100;
+  background: #ffffff;
+  box-shadow: rgb(47 122 249 / 10%) 4px 0px 10px;
+  transition: all .3s ease-in 0s;
+}
+
+.leftSide__isActive {
+  animation: animationLeftSide 1s ease forwards;
+}
+
+@keyframes animationLeftSide {
+  from {
+    left: -290px;
+  }
+  to {
+    left: 0;
+  }
+}

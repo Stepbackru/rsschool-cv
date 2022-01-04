@@ -17,15 +17,28 @@
             <div class="photo">
                 <img src="assets/photo.jpg" alt="photo of">
             </div>
-            <section class="name-info">
-                <h1>Alexander Rybakov</h1>
-                <h2>Junior JavaScript Developer</h2>
-                <p>Moscow, <a href="#contacts">Contact info</a></p>
-            </section>
+            <div class="container">
+                <section class="name-info">
+                    <h1>Alexander Rybakov</h1>
+                    <h2>Junior JavaScript Developer</h2>
+                    <p>Moscow, <a href="#contacts">Contact info</a></p>
+                </section>
+                <nav class="nav">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a href="#edu" class="menu__link">Education</a></li>
+                        <li class="menu__item"><a href="#exp" class="menu__link">Experience</a></li>
+                        <li class="menu__item"><a href="#contacts" class="menu__link">Contacts</a></li>
+                        <li class="menu__item"><a href="#code" class="menu__link">Example code</a></li>
+                        <li class="menu__item"><a href="#about" class="menu__link">About me</a></li>
+                        <li class="menu__item"><a href="#skills" class="menu__link">Skills</a></li>
+                        <li class="menu__item"><a href="#eng" class="menu__link">English</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main>
             <div class="col1">
-                <article class="col1__edu">
+                <article id="edu" class="col1__edu">
                     <h2>Education</h2>
                     <ol>
                         <li>Complete secondary Education</li>
@@ -48,7 +61,7 @@
                         <li>Since September 2019, I have been a student of the <a href="https://docs.rs.school/#/">RS school</a> every six months, for various reasons I have never been able to finish it, but during the time I studied there I have mastered sufficient skills to help others in their studies and have been holding the position of a school activist for more than a year. I am writing guides for students and will soon create a short video course for very beginner students.</li>
                     </ol>
                 </article>
-                <article class="col1__exp">
+                <article id="exp" class="col1__exp">
                     <h2>Experience</h2>
                     <p>I went through 11 courses that relate to front-end and back-end web development and almost all my work is in <a href="https://github.com/Stepbackru/Study-front-end">this repository</a> this repository But at one of the courses there was the final task of page layout according to the psd layout (which the teacher gave us) for the speed among students, I completed the work first and the teacher posted it on his resource, it is <a href="https://petiteweb.ru/vinners/rybakov/">available here (now not available)</a></p>
                     <p>You can see the results of my studies at the RS school in <a href="https://github.com/Stepbackru">my github</a>, all that you will see there are the tasks completed as part of the training there</p>
@@ -63,7 +76,7 @@
                         <li>Telegram: <a href="tg://resolve?domain=stepbackrus">@stepbackrus</a></li>
                     </ul>
                 </article>
-                <article class="col1__code">
+                <article id="code" class="col1__code">
                     <h2>Example of my code</h2>
                     <pre><code>// {Object} args
 
@@ -123,11 +136,11 @@ export default render;
                 </article>
             </div>
             <div class="col2">
-                    <article class="col2__about">
+                    <article id="about" class="col2__about">
                             <h2>About me</h2>
                             <p>All my life I wanted to start programming and engage in development, at the age of 14 I started studying HTML and knew the basics, but later abandoned it. This year my life has changed a lot and I got an irresistible desire to study and develop in the field of web development and not only, I went to courses and studied several disciplines at once, it was difficult, I combined work, several homework at once, loaded myself to the maximum, to learn more and here, on the advice of my friend, I heard about the company, where I want to go, in order to develop professionally.</p>
                     </article>
-                    <article class="col2__skills">
+                    <article id="skills" class="col2__skills">
                             <h2>Skills</h2>
                             <ol>
                                 <li>HTML4-5
@@ -181,7 +194,7 @@ export default render;
                                 </li>
                             </ol>
                     </article>
-                    <article class="col2__eng">
+                    <article id="eng" class="col2__eng">
                             <h2>English</h2>
                             <p>I study English from school, I also went to courses for some time, in the same courses my level of English was determined, it is level A2, closer to level B1</p>
                     </article>
@@ -189,7 +202,11 @@ export default render;
         </main>
     </div>
     <footer>
-            <p>© Copyright 2019-2021 by Alexander Rybakov</p>
+            <p>© Copyright 2019-2022 by Alexander Rybakov</p>
+            <ul class="socials">
+              <li class="socials__item"><a class="socials__link link-gh" href="https://github.com/Stepbackru" aria-label="link to my github"></a></li>
+              <li class="socials__item"><a class="socials__link link-rs" href="https://rs.school/js/" aria-label="link to rsschool course"></a></li>
+            </ul>
     </footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
     <script src="/path/to/highlight.pack.js"></script>

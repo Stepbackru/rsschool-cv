@@ -13,7 +13,7 @@ class App extends Component {
         <AboutMe />
       </aside>
       <main className="main">
-        
+        {/* test */}
       </main>
     </div>
     )    
